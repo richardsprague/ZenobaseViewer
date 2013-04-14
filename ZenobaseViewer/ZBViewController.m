@@ -9,8 +9,13 @@
 #import "ZBViewController.h"
 #import "Zenobase.h"
 #define ZBUSERNAME_KEY @"USERNAME"
+#define ZBPASSWORD_KEY @"PASSWORD"
+#define ZBACCESSTOKEN_KEY @"ACCESSTOKEN"
+#define ZBCLIENTID_KEY @"CLIENTID"
+
 
 @interface ZBViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *ZBClientIDLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ZBMainTextView;
 @property (strong, nonatomic) Zenobase *myZB;
 @property (weak, nonatomic) IBOutlet UILabel *ZBUsernameLabel;
@@ -44,6 +49,11 @@
     [super viewDidAppear:(BOOL)animated];
 	// Do any additional setup after loading the view, typically from a nib.
     self.ZBUsernameLabel.text = [[NSString alloc] initWithFormat:@"For user: %@",[[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY]];
+    
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:ZBCLIENTID_KEY]){
+        self.ZBClientIDLabel.text = [[NSString alloc] initWithString:[[NSUserDefaults standardUserDefaults] stringForKey:ZBCLIENTID_KEY] ];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

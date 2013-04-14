@@ -11,11 +11,18 @@
 
 #define ZBUSERNAME_KEY @"USERNAME"
 #define ZBPASSWORD_KEY @"PASSWORD"
+#define ZBACCESSTOKEN_KEY @"ACCESSTOKEN"
+#define ZBCLIENTID_KEY @"CLIENTID"
+
 
 @interface ZBSettingsViewController()<ZBConnectionProtocol>
 
 @property (strong, nonatomic) NSString *ZBUsernameString;
 @property (strong, nonatomic) NSString *ZBPasswordString;
+
+@property (strong, nonatomic) NSString *ZBAccessTokenString;
+@property (strong, nonatomic) NSString *ZBClientIDString;
+
 @property (weak, nonatomic) IBOutlet UITextField *ZBUsernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ZBPasswordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *ZBAccessTokenLabel;
@@ -31,7 +38,14 @@
 
 - (void)didReceiveJSON:(NSDictionary*)json
 {
-  self.ZBAccessTokenLabel.text = [json objectForKey:@"access_token"];
+    self.ZBAccessTokenString = [json objectForKey:@"access_token"];
+    self.ZBClientIDString = [json objectForKey:@"client_id"];
+    
+    self.ZBAccessTokenLabel.text = self.ZBAccessTokenString;
+
+    [[NSUserDefaults standardUserDefaults] setObject:self.ZBAccessTokenString forKey:ZBACCESSTOKEN_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:self.ZBClientIDString forKey:ZBCLIENTID_KEY];
+    
   
     
 
@@ -88,6 +102,7 @@
         self.ZBUserNameLabel.text = currentUsername;
         self.ZBUsernameString = [[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY];
         self.ZBPasswordString = [[NSUserDefaults standardUserDefaults] stringForKey:ZBPASSWORD_KEY];
+        
         
     }
         
