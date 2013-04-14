@@ -29,7 +29,10 @@
     ZBConnectionDelegate *newConnection = [[ZBConnectionDelegate alloc] init ];
     
     [newConnection getZBAccessTokenForUsername:self.ZBUsernameString withPassword:self.ZBPasswordString];
-    self.ZBUserNameLabel.text = [[NSString alloc] initWithString:newConnection.ZBAccessToken];
+    
+    NSLog(@"finished submit");
+    
+  //  self.ZBUserNameLabel.text = [[NSString alloc] initWithString:newConnection.ZBAccessToken];
     
 }
 
@@ -59,6 +62,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // NB: assumes that if there is a valid username, then there's a valid password too.
 
     NSString *currentUsername = [[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY];
     
@@ -66,8 +71,14 @@
     
     if (!currentUsername) {self.ZBUserNameLabel.text = @"<unknown>";
         
-    } else self.ZBUserNameLabel.text = currentUsername;
-}
+    } else {
+        self.ZBUserNameLabel.text = currentUsername;
+        self.ZBUsernameString = [[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY];
+        self.ZBPasswordString = [[NSUserDefaults standardUserDefaults] stringForKey:ZBPASSWORD_KEY];
+        
+    }
+        
+    }
 
 
 @end
