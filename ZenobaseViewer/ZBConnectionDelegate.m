@@ -19,7 +19,36 @@
 @implementation ZBConnectionDelegate
 
 
+- (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password
+{
 
+    
+    [self.connection cancel];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    self.receivedData = data;
+    
+    NSURL *url  = [NSURL URLWithString:@"https://api.zenobase.com/oauth/token"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+
+    
+    
+    [request setHTTPMethod:@"POST"];
+
+    [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *postData = [[NSString alloc] initWithFormat:@"grant_type=password&username=%@&password=%@",username,password];
+    
+      
+   [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+        
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    self.connection = connection;
+    
+    [connection start];
+    
+}
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
@@ -44,7 +73,7 @@
                           options:kNilOptions
                           error:&error];
     
-    NSArray* latestEvents = [json objectForKey:@"events"]; //2
+    self.ZBAccessToken = [json objectForKey:@"access_token"]; //2
     
 
 }

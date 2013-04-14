@@ -11,6 +11,10 @@
 
 @interface ZBConnectionDelegate : NSObject
 
+- (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password;
+
+@property (strong, nonatomic) NSString *ZBAccessToken;
+
 @end
 
 @protocol ZBConnectionDelegate <NSObject>

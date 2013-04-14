@@ -7,13 +7,16 @@
 //
 
 #import "ZBSettingsViewController.h"
+#import "ZBConnectionDelegate.h"
 
 #define ZBUSERNAME_KEY @"USERNAME"
+#define ZBPASSWORD_KEY @"PASSWORD"
 
 @interface ZBSettingsViewController()
 @property (strong, nonatomic) NSString *ZBUsernameString;
 @property (strong, nonatomic) NSString *ZBPasswordString;
 @property (weak, nonatomic) IBOutlet UITextField *ZBUsernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *ZBPasswordTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *ZBUserNameLabel;
 
@@ -21,6 +24,14 @@
 
 
 @implementation ZBSettingsViewController
+
+- (IBAction)clickSubmit:(id)sender {
+    ZBConnectionDelegate *newConnection = [[ZBConnectionDelegate alloc] init ];
+    
+    [newConnection getZBAccessTokenForUsername:self.ZBUsernameString withPassword:self.ZBPasswordString];
+    self.ZBUserNameLabel.text = [[NSString alloc] initWithString:newConnection.ZBAccessToken];
+    
+}
 
 - (IBAction)clickUsername:(UITextField *)sender {
     
@@ -32,6 +43,10 @@
 }
 
 - (IBAction)clickPassword:(UITextField *)sender {
+    self.ZBPasswordString = [[NSString alloc] initWithString: self.ZBPasswordTextField.text];
+   
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.ZBPasswordString  forKey:ZBPASSWORD_KEY ];
 
     
     
