@@ -13,6 +13,7 @@
 @interface ZBConnectionDelegate : NSObject
 
 - (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password;
+- (void) getBuckets;
 
 @property (strong, nonatomic) id <ZBConnectionProtocol>delegate;
 

@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				FEBEB83E1715D27B006CE864 /* Zenobase.h */,
-				FEE66C0D171A52540045674B /* ZBConnectionDelegate.h */,
 				FEE66C10171AFAC50045674B /* ZBConnectionProtocol.h */,
+				FEE66C0D171A52540045674B /* ZBConnectionDelegate.h */,
 				FEE66C0E171A52540045674B /* ZBConnectionDelegate.m */,
 				FEBEB83F1715D27B006CE864 /* Zenobase.m */,
 				FEBEB8421715D2A6006CE864 /* ZBBucket.h */,

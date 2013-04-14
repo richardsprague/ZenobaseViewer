@@ -18,6 +18,47 @@
 
 @implementation ZBConnectionDelegate
 
+- (void) getBuckets
+{
+    [self.connection cancel];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    self.receivedData = data;
+    
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:lijjd3ofvb&limit=10"];
+    
+    NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
+    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] stringForKey:@"ACCESSTOKEN"]] ;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
+    
+    
+    //    NSString *getBody = ZENOBASE_AUTH;
+    //    [request setHTTPBody:[getBody dataUsingEncoding:NSUTF8StringEncoding]];
+    ////
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
+    assert(connection);
+    
+    self.connection = connection;
+    [connection start];
+}
+
+- (void) getEvents
+{
+    
+}
+
+
+- (void) getEventForBucket: (NSString *) bucket
+{
+    
+}
 
 - (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password
 {
@@ -58,7 +99,10 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+  //  NSLog(data.description);
+    assert(data);
     [self.receivedData appendData:data];
+    assert (self.receivedData);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

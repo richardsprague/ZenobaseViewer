@@ -9,12 +9,6 @@
 #import "ZBSettingsViewController.h"
 
 
-#define ZBUSERNAME_KEY @"USERNAME"
-#define ZBPASSWORD_KEY @"PASSWORD"
-#define ZBACCESSTOKEN_KEY @"ACCESSTOKEN"
-#define ZBCLIENTID_KEY @"CLIENTID"
-
-
 @interface ZBSettingsViewController()<ZBConnectionProtocol>
 
 @property (strong, nonatomic) NSString *ZBUsernameString;
@@ -34,7 +28,7 @@
 
 @implementation ZBSettingsViewController
 
-@synthesize ZBJsonReturned = _ZBJsonReturned;
+//@synthesize ZBJsonReturned = _ZBJsonReturned;
 
 - (void)didReceiveJSON:(NSDictionary*)json
 {

@@ -8,13 +8,10 @@
 
 #import "ZBViewController.h"
 #import "Zenobase.h"
-#define ZBUSERNAME_KEY @"USERNAME"
-#define ZBPASSWORD_KEY @"PASSWORD"
-#define ZBACCESSTOKEN_KEY @"ACCESSTOKEN"
-#define ZBCLIENTID_KEY @"CLIENTID"
+#import "ZBConnectionDelegate.h"
 
 
-@interface ZBViewController ()
+@interface ZBViewController ()<ZBConnectionProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *ZBClientIDLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ZBMainTextView;
 @property (strong, nonatomic) Zenobase *myZB;
@@ -24,6 +21,28 @@
 
 @implementation ZBViewController
 
+- (void)didReceiveJSON:(NSDictionary*)json
+{
+    self.ZBMainTextView.text = nil;
+    NSDictionary *jsonBuckets = [json objectForKey:@"buckets"];
+    NSString *jsonTotal = [json objectForKey:@"total"];
+    NSLog(@"found %@ buckets",jsonTotal);
+    
+    NSMutableArray *bucketArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *bucket in jsonBuckets ){
+        [bucketArray addObject:bucket];
+    }
+   // NSLog(bucketArray.description);
+    
+    for (NSDictionary *bucket in bucketArray){
+        NSLog([bucket objectForKey:@"label"]);
+        self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"%@ \n%@",self.ZBMainTextView.text,[bucket objectForKey:@"label"]];
+        
+    }
+    
+    
+    
+}
 
 // getter for Zenobase *myZB
 - (Zenobase *) myZB
@@ -37,11 +56,16 @@
 }
 
 - (IBAction)ZBListBucketsClicked:(UIButton *)sender {
-    self.ZBMainTextView.text = self.myZB.description;
+    self.ZBMainTextView.text = @"listening";
+    
+    ZBConnectionDelegate *newConnection = [[ZBConnectionDelegate alloc] init];
+    newConnection.delegate = self;
+    [newConnection getBuckets];
     
 }
 
 - (IBAction)ZBListEventsClicked:(UIButton *)sender {
+    self.ZBMainTextView.text = @"<no events>";
 }
 
 - (void)viewDidAppear:(BOOL)animated
