@@ -8,11 +8,12 @@
 
 #import "ZBViewController.h"
 #import "Zenobase.h"
-
+#define ZBUSERNAME_KEY @"USERNAME"
 
 @interface ZBViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *ZBMainTextView;
 @property (strong, nonatomic) Zenobase *myZB;
+@property (weak, nonatomic) IBOutlet UILabel *ZBUsernameLabel;
 
 @end
 
@@ -38,10 +39,11 @@
 - (IBAction)ZBListEventsClicked:(UIButton *)sender {
 }
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewDidAppear:(BOOL)animated];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.ZBUsernameLabel.text = [[NSString alloc] initWithFormat:@"For user: %@",[[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY]];
 }
 
 - (void)didReceiveMemoryWarning

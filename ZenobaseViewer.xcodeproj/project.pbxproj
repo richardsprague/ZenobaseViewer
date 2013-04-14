@@ -21,6 +21,8 @@
 		FEBEB8401715D27B006CE864 /* Zenobase.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBEB83F1715D27B006CE864 /* Zenobase.m */; };
 		FEBEB8441715D2A6006CE864 /* ZBBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBEB8431715D2A6006CE864 /* ZBBucket.m */; };
 		FEBEB8471715D2B3006CE864 /* ZBEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBEB8461715D2B3006CE864 /* ZBEvent.m */; };
+		FEE66C0C1719C7EF0045674B /* ZBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE66C0B1719C7EF0045674B /* ZBSettingsViewController.m */; };
+		FEE66C0F171A52540045674B /* ZBConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE66C0E171A52540045674B /* ZBConnectionDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,10 @@
 		FEBEB8431715D2A6006CE864 /* ZBBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBBucket.m; sourceTree = "<group>"; };
 		FEBEB8451715D2B3006CE864 /* ZBEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBEvent.h; sourceTree = "<group>"; };
 		FEBEB8461715D2B3006CE864 /* ZBEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBEvent.m; sourceTree = "<group>"; };
+		FEE66C0A1719C7EF0045674B /* ZBSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBSettingsViewController.h; sourceTree = "<group>"; };
+		FEE66C0B1719C7EF0045674B /* ZBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBSettingsViewController.m; sourceTree = "<group>"; };
+		FEE66C0D171A52540045674B /* ZBConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBConnectionDelegate.h; sourceTree = "<group>"; };
+		FEE66C0E171A52540045674B /* ZBConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBConnectionDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,8 @@
 				FEBEB8411715D284006CE864 /* ZBModel */,
 				FEBEB8361715D0BD006CE864 /* ZBViewController.h */,
 				FEBEB8371715D0BD006CE864 /* ZBViewController.m */,
+				FEE66C0A1719C7EF0045674B /* ZBSettingsViewController.h */,
+				FEE66C0B1719C7EF0045674B /* ZBSettingsViewController.m */,
 				FEBEB8221715D0BD006CE864 /* Supporting Files */,
 			);
 			path = ZenobaseViewer;
@@ -121,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				FEBEB83E1715D27B006CE864 /* Zenobase.h */,
+				FEE66C0D171A52540045674B /* ZBConnectionDelegate.h */,
+				FEE66C0E171A52540045674B /* ZBConnectionDelegate.m */,
 				FEBEB83F1715D27B006CE864 /* Zenobase.m */,
 				FEBEB8421715D2A6006CE864 /* ZBBucket.h */,
 				FEBEB8431715D2A6006CE864 /* ZBBucket.m */,
@@ -203,6 +213,8 @@
 				FEBEB8401715D27B006CE864 /* Zenobase.m in Sources */,
 				FEBEB8441715D2A6006CE864 /* ZBBucket.m in Sources */,
 				FEBEB8471715D2B3006CE864 /* ZBEvent.m in Sources */,
+				FEE66C0C1719C7EF0045674B /* ZBSettingsViewController.m in Sources */,
+				FEE66C0F171A52540045674B /* ZBConnectionDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +337,7 @@
 				FEBEB83D1715D0BD006CE864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
