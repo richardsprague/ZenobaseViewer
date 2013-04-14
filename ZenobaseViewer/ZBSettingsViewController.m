@@ -7,16 +7,18 @@
 //
 
 #import "ZBSettingsViewController.h"
-#import "ZBConnectionDelegate.h"
+
 
 #define ZBUSERNAME_KEY @"USERNAME"
 #define ZBPASSWORD_KEY @"PASSWORD"
 
-@interface ZBSettingsViewController()
+@interface ZBSettingsViewController()<ZBConnectionProtocol>
+
 @property (strong, nonatomic) NSString *ZBUsernameString;
 @property (strong, nonatomic) NSString *ZBPasswordString;
 @property (weak, nonatomic) IBOutlet UITextField *ZBUsernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ZBPasswordTextField;
+@property (weak, nonatomic) IBOutlet UILabel *ZBAccessTokenLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *ZBUserNameLabel;
 
@@ -25,8 +27,19 @@
 
 @implementation ZBSettingsViewController
 
+@synthesize ZBJsonReturned = _ZBJsonReturned;
+
+- (void)didReceiveJSON:(NSDictionary*)json
+{
+  self.ZBAccessTokenLabel.text = [json objectForKey:@"access_token"];
+  
+    
+
+}
+
 - (IBAction)clickSubmit:(id)sender {
     ZBConnectionDelegate *newConnection = [[ZBConnectionDelegate alloc] init ];
+    newConnection.delegate = self;
     
     [newConnection getZBAccessTokenForUsername:self.ZBUsernameString withPassword:self.ZBPasswordString];
     

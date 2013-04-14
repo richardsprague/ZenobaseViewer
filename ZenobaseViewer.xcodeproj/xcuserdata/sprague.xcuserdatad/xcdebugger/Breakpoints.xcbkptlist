@@ -21,51 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ZenobaseViewer/ZBConnectionDelegate.m"
-         timestampString = "387605635.69388"
+         timestampString = "387644205.050322"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "76"
          endingLineNumber = "76"
          landmarkName = "-connectionDidFinishLoading:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ZenobaseViewer/ZBSettingsViewController.m"
-         timestampString = "387640057.09727"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
-         landmarkName = "-clickSubmit:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ZenobaseViewer/ZBConnectionDelegate.m"
-         timestampString = "387607058.772663"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
-         landmarkName = "-getZBAccessTokenForUsername:withPassword:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ZenobaseViewer/ZBConnectionDelegate.m"
-         timestampString = "387639305.026733"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "61"
-         endingLineNumber = "61"
-         landmarkName = "-connection:didReceiveData:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

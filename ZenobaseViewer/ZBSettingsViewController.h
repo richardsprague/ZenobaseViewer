@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBConnectionDelegate.h"
 
 @interface ZBSettingsViewController : UIViewController
+
 
 @end

@@ -74,6 +74,8 @@
                           error:&error];
     
     self.ZBAccessToken = [json objectForKey:@"access_token"]; //2
+    //self.delegate.ZBJsonReturned = json;
+    [self.delegate didReceiveJSON:json];
     
 
 }

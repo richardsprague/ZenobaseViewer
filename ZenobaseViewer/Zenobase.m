@@ -56,7 +56,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString *htmlSTR = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    // NSLog(@"%@",htmlSTR);
+     NSLog(@"Zenobase: %@",htmlSTR);
     
     NSError* error;
     NSDictionary* json = [NSJSONSerialization
