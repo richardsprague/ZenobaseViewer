@@ -29,6 +29,8 @@
 	// Do any additional setup after loading the view.
     NSMutableArray *bucketsTemp = [[NSMutableArray alloc] init];
     
+    if (!self.buckets){
+    
     for (int i=0;i<5;i++)
     {
         NSString *thisBucket = [[NSString alloc] initWithFormat:@"Bucket %d",i];
@@ -39,7 +41,12 @@
         
     }
     
+    
     self.buckets = bucketsTemp;
+    }
+    
+    // self.buckets is an array of dictionary items, each of which has a set of values and keys including one key "label" with a value of the name of the bucket.
+    
   
     
     

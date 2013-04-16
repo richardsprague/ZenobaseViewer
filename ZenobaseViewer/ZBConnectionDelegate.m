@@ -37,7 +37,7 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     self.receivedData = data;
     
-    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=10",self.ZBClientIDString];
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=100",self.ZBClientIDString];
     
     NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
     NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;

@@ -8,6 +8,7 @@
 
 #import "ZBViewController.h"
 #import "Zenobase.h"
+#import "ZBBucketViewController.h"
 #import "ZBConnectionDelegate.h"
 
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *ZBMainTextView;
 @property (strong, nonatomic) Zenobase *myZB;
 @property (weak, nonatomic) IBOutlet UILabel *ZBUsernameLabel;
+@property (strong, nonatomic) NSArray *buckets;
 
 @end
 
@@ -33,14 +35,33 @@
         [bucketArray addObject:bucket];
     }
    // NSLog(bucketArray.description);
+        NSMutableArray *bucketsTemp = [[NSMutableArray alloc] init];
     
     for (NSDictionary *bucket in bucketArray){
         NSLog([bucket objectForKey:@"label"]);
-        self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"%@ \n%@",self.ZBMainTextView.text,[bucket objectForKey:@"label"]];
+        [bucketsTemp addObject:[bucket objectForKey:@"label"]];
+        self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"%@><%@",self.ZBMainTextView.text,[bucket objectForKey:@"label"]];
         
     }
     
+    //bucketArray is an array of the dictionary objects I want to pass to the UITableViewController.
+    //ZBBucketViewController *nextVC = [[ZBBucketViewController alloc] init];
     
+    self.buckets = bucketArray;
+    
+    
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ZBBucketViewController *nextView = [segue destinationViewController];
+    
+    if (self.buckets){
+    nextView.buckets = self.buckets;
+    } else NSLog(@"waiting for buckets");
+    
+    //  nextView.scene = [[STScene alloc] init];
+    // nextView.delegate = self;
     
 }
 
