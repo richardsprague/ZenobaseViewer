@@ -17,6 +17,5 @@
 
 @property (strong, nonatomic) id <ZBConnectionProtocol>delegate;
 
-@property (strong, nonatomic) NSString *ZBAccessToken;
 
 @end

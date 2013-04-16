@@ -12,11 +12,24 @@
 
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableData *receivedData;
+@property (strong, nonatomic) NSString *ZBAccessTokenString;
+@property (strong, nonatomic) NSString *ZBClientIDString;
 
 @end
 
 
 @implementation ZBConnectionDelegate
+
+- (id) init {
+    
+    self = [super init];
+    
+    self.ZBAccessTokenString = [[NSString alloc] initWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] stringForKey:@"ACCESSTOKEN"]] ;
+    self.ZBClientIDString = [[NSString alloc] initWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] stringForKey:@"CLIENTID"]] ;
+    
+    return self;
+    
+}
 
 - (void) getBuckets
 {
@@ -24,10 +37,10 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     self.receivedData = data;
     
-    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:lijjd3ofvb&limit=10"];
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=10",self.ZBClientIDString];
     
     NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
-    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",[[NSUserDefaults standardUserDefaults] stringForKey:@"ACCESSTOKEN"]] ;
+    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -37,10 +50,6 @@
     [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
     [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
     
-    
-    //    NSString *getBody = ZENOBASE_AUTH;
-    //    [request setHTTPBody:[getBody dataUsingEncoding:NSUTF8StringEncoding]];
-    ////
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
     assert(connection);
@@ -117,8 +126,6 @@
                           options:kNilOptions
                           error:&error];
     
-  //  self.ZBAccessToken = [json objectForKey:@"access_token"]; //2
-    //self.delegate.ZBJsonReturned = json;
     [self.delegate didReceiveJSON:json];
     
 

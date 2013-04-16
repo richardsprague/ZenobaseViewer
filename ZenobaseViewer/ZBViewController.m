@@ -56,7 +56,7 @@
 }
 
 - (IBAction)ZBListBucketsClicked:(UIButton *)sender {
-    self.ZBMainTextView.text = @"listening";
+    self.ZBMainTextView.text = @"Getting list of buckets...";
     
     ZBConnectionDelegate *newConnection = [[ZBConnectionDelegate alloc] init];
     newConnection.delegate = self;
