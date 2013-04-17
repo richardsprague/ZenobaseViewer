@@ -38,9 +38,9 @@
         NSMutableArray *bucketsTemp = [[NSMutableArray alloc] init];
     
     for (NSDictionary *bucket in bucketArray){
-        NSLog([bucket objectForKey:@"label"]);
+     //   NSLog([bucket objectForKey:@"label"]);
         [bucketsTemp addObject:[bucket objectForKey:@"label"]];
-        self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"%@><%@",self.ZBMainTextView.text,[bucket objectForKey:@"label"]];
+        self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"<%@ %@>",self.ZBMainTextView.text,[bucket objectForKey:@"label"]];
         
     }
     

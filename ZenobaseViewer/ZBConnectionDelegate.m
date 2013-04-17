@@ -37,7 +37,7 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     self.receivedData = data;
     
-    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=100",self.ZBClientIDString];
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=20",self.ZBClientIDString];
     
     NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
     NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
@@ -64,9 +64,33 @@
 }
 
 
-- (void) getEventForBucket: (NSString *) bucket
+- (void) getEventsForBucket: (NSString *) bucketIDString
 {
+    [self.connection cancel];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    self.receivedData = data;
     
+    
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/?w=id:xlkj,id:myEvents,type:list",bucketIDString];
+    
+    NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
+    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
+    
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
+    assert(connection);
+    
+    self.connection = connection;
+    [connection start];
+
 }
 
 - (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password
@@ -117,7 +141,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString *htmlSTR = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"htmlstr=%@",htmlSTR);
+   // NSLog(@"htmlstr=%@",htmlSTR);
     
     NSError* error;
     NSDictionary* json = [NSJSONSerialization

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBEventVC.h"
+#import "ZBConnectionDelegate.h"
 
 @interface ZBTableViewController : UITableViewController
 

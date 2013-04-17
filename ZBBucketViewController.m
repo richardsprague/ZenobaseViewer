@@ -37,7 +37,7 @@
         
         NSDictionary *bucket = [[NSDictionary alloc] initWithObjectsAndKeys:thisBucket ,@"label", nil];
         [bucketsTemp addObject:bucket];
-        NSLog(bucket.description);
+    //    NSLog(bucket.description);
         
     }
     
