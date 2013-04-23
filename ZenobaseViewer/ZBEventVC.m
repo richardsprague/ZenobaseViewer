@@ -11,6 +11,7 @@
 
 @interface ZBEventVC ()<ZBConnectionProtocol>
 
+
 @end
 
 @implementation ZBEventVC
@@ -18,8 +19,29 @@
 - (void) didReceiveJSON:(NSDictionary *)json
 {
     NSLog(@"received something...");
-    NSLog(json.description);
+ //   NSLog(json.description);
+    NSDictionary *jsonevents = [json objectForKey:@"myEvents"];
+    NSString *jsonTotal = [json objectForKey:@"total"];
+    NSLog(@"found %@ events",jsonTotal);
     
+    NSMutableArray *eventArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *event in jsonevents ){
+        [eventArray addObject:event];
+    }
+    // NSLog(eventArray.description);
+    NSMutableArray *eventsTemp = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *event in eventArray){
+        //   NSLog([event objectForKey:@"label"]);
+        NSString *eventItem = [event objectForKey:@"@id"];
+        if (eventItem) { [eventsTemp addObject:eventItem];
+             NSLog(@"eventItem = %@",eventItem.description);
+        }
+        self.eventIDs = eventsTemp;
+        
+   //     self.ZBMainTextView.text = [[NSString alloc] initWithFormat:@"<%@ %@>",self.ZBMainTextView.text,[event objectForKey:@"label"]];
+       
+    }
     
 }
 

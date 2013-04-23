@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE909FD71725F47400A3030E /* ZBEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE909FD61725F47400A3030E /* ZBEventTableViewController.m */; };
+		FE909FDD1725F81600A3030E /* ZBEventIDTableViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE909FDC1725F81500A3030E /* ZBEventIDTableViewer.m */; };
 		FEBEB81C1715D0BD006CE864 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEBEB81B1715D0BD006CE864 /* UIKit.framework */; };
 		FEBEB81E1715D0BD006CE864 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEBEB81D1715D0BD006CE864 /* Foundation.framework */; };
 		FEBEB8201715D0BD006CE864 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEBEB81F1715D0BD006CE864 /* CoreGraphics.framework */; };
@@ -31,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE909FD51725F47400A3030E /* ZBEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBEventTableViewController.h; sourceTree = "<group>"; };
+		FE909FD61725F47400A3030E /* ZBEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBEventTableViewController.m; sourceTree = "<group>"; };
+		FE909FDB1725F81500A3030E /* ZBEventIDTableViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBEventIDTableViewer.h; path = ../ZBEventIDTableViewer.h; sourceTree = "<group>"; };
+		FE909FDC1725F81500A3030E /* ZBEventIDTableViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBEventIDTableViewer.m; path = ../ZBEventIDTableViewer.m; sourceTree = "<group>"; };
 		FEBEB8181715D0BD006CE864 /* ZenobaseViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenobaseViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBEB81B1715D0BD006CE864 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEBEB81D1715D0BD006CE864 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,10 +125,14 @@
 				FEBEB82B1715D0BD006CE864 /* ZBAppDelegate.m */,
 				FEBEB8331715D0BD006CE864 /* MainStoryboard.storyboard */,
 				FEBEB8411715D284006CE864 /* ZBModel */,
-				FEE66C11171B60EF0045674B /* ZBTableViewController.h */,
-				FEE66C12171B60EF0045674B /* ZBTableViewController.m */,
+				FE909FDB1725F81500A3030E /* ZBEventIDTableViewer.h */,
+				FE909FDC1725F81500A3030E /* ZBEventIDTableViewer.m */,
+				FE909FD51725F47400A3030E /* ZBEventTableViewController.h */,
+				FE909FD61725F47400A3030E /* ZBEventTableViewController.m */,
 				FEE66C53171E20690045674B /* ZBEventVC.h */,
 				FEE66C54171E206A0045674B /* ZBEventVC.m */,
+				FEE66C11171B60EF0045674B /* ZBTableViewController.h */,
+				FEE66C12171B60EF0045674B /* ZBTableViewController.m */,
 				FEE66C4C171CBCD80045674B /* ZBBucketViewController.h */,
 				FEE66C4D171CBCD80045674B /* ZBBucketViewController.m */,
 				FEBEB8361715D0BD006CE864 /* ZBViewController.h */,
@@ -243,6 +253,8 @@
 				FEE66C13171B60EF0045674B /* ZBTableViewController.m in Sources */,
 				FEE66C4E171CBCD80045674B /* ZBBucketViewController.m in Sources */,
 				FEE66C55171E206A0045674B /* ZBEventVC.m in Sources */,
+				FE909FD71725F47400A3030E /* ZBEventTableViewController.m in Sources */,
+				FE909FDD1725F81600A3030E /* ZBEventIDTableViewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
