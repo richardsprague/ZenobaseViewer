@@ -2,20 +2,20 @@
 //  ZBSettingsViewController.m
 //  ZenobaseViewer
 //
-//  Created by Richard Sprague on 4/13/13.
-//  Copyright (c) 2013 Richard Sprague. All rights reserved.
+//  Created by Richard Sprague on 2/25/14.
+//  Copyright (c) 2014 Richard Sprague. All rights reserved.
 //
 
 #import "ZBSettingsViewController.h"
 
-
-@interface ZBSettingsViewController()<ZBConnectionProtocol>
+@interface ZBSettingsViewController () <ZBConnectionProtocol>
 
 @property (strong, nonatomic) NSString *ZBUsernameString;
 @property (strong, nonatomic) NSString *ZBPasswordString;
 
 @property (strong, nonatomic) NSString *ZBAccessTokenString;
 @property (strong, nonatomic) NSString *ZBClientIDString;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *ZBUsernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ZBPasswordTextField;
@@ -25,10 +25,7 @@
 
 @end
 
-
 @implementation ZBSettingsViewController
-
-//@synthesize ZBJsonReturned = _ZBJsonReturned;
 
 - (void)didReceiveJSON:(NSDictionary*)json
 {
@@ -36,13 +33,13 @@
     self.ZBClientIDString = [json objectForKey:@"client_id"];
     
     self.ZBAccessTokenLabel.text = self.ZBAccessTokenString;
-
+    
     [[NSUserDefaults standardUserDefaults] setObject:self.ZBAccessTokenString forKey:ZBACCESSTOKEN_KEY];
     [[NSUserDefaults standardUserDefaults] setObject:self.ZBClientIDString forKey:ZBCLIENTID_KEY];
     
-  
     
-
+    
+    
 }
 
 - (IBAction)clickSubmit:(id)sender {
@@ -53,7 +50,7 @@
     
     NSLog(@"finished submit");
     
-  //  self.ZBUserNameLabel.text = [[NSString alloc] initWithString:newConnection.ZBAccessToken];
+    //  self.ZBUserNameLabel.text = [[NSString alloc] initWithString:newConnection.ZBAccessToken];
     
 }
 
@@ -68,27 +65,34 @@
 
 - (IBAction)clickPassword:(UITextField *)sender {
     self.ZBPasswordString = [[NSString alloc] initWithString: self.ZBPasswordTextField.text];
-   
+    
     
     [[NSUserDefaults standardUserDefaults] setObject:self.ZBPasswordString  forKey:ZBPASSWORD_KEY ];
-
+    
     
     
 }
 
-- (IBAction)clickUpdate:(UIButton *)sender {
-}
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
     
     // NB: assumes that if there is a valid username, then there's a valid password too.
-
+    
     NSString *currentUsername = [[NSUserDefaults standardUserDefaults] stringForKey:ZBUSERNAME_KEY];
     
-  
+    
     
     if (!currentUsername) {self.ZBUserNameLabel.text = @"<unknown>";
         
@@ -99,8 +103,14 @@
         
         
     }
-        
-    }
+    
+}
 
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

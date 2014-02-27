@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>33F84F54-66D5-4D68-AC61-2CF2225E8041</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZenobaseViewer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>056B5986-7975-45AE-B4B1-F7E1F4AD3F21</key>
+		<string>https://github.com/richardsprague/ZenobaseViewer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZenobaseViewer.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>056B5986-7975-45AE-B4B1-F7E1F4AD3F21</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/richardsprague/ZenobaseViewer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>056B5986-7975-45AE-B4B1-F7E1F4AD3F21</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>056B5986-7975-45AE-B4B1-F7E1F4AD3F21</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZenobaseViewer</string>
+		</dict>
+	</array>
+</dict>
+</plist>

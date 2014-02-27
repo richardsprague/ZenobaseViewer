@@ -5,6 +5,11 @@
 //  Created by Richard Sprague on 4/13/13.
 //  Copyright (c) 2013 Richard Sprague. All rights reserved.
 //
+// This class knows how to talk to Zenobase.
+// to use i
+//
+//
+
 
 #import <Foundation/Foundation.h>
 #import "ZBConnectionProtocol.h"

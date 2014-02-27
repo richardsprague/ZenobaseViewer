@@ -18,6 +18,9 @@
 @end
 
 
+//Initializing this class sets it up with the access token and ID string you pre-registered in NSUserDefaults.
+// if there are no access strings in NSUserDefaults, you should go prompt the user.
+
 @implementation ZBConnectionDelegate
 
 - (id) init {
@@ -37,9 +40,9 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     self.receivedData = data;
     
-    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/?q=roles.principal:%@&limit=20",self.ZBClientIDString];
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"%@/buckets/?q=roles.principal:%@&limit=20",self.ZBClientIDString,self.ZBClientIDString];
     
-    NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
+    NSString *urlString = [@"https://api.zenobase.com/users/" stringByAppendingString:parameterString];
     NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -58,8 +61,34 @@
     [connection start];
 }
 
-- (void) getEvents
+- (void) createNewBucket: (NSString *) newBucketName
 {
+    [self.connection cancel];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    self.receivedData = data;
+    
+    
+    //old//    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/?w=id:xlkj,id:myEvents,type:list",bucketIDString];
+    
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/"];
+    
+    NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
+    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
+    
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
+    assert(connection);
+    
+    self.connection = connection;
+    [connection start];
     
 }
 
@@ -70,6 +99,8 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     self.receivedData = data;
     
+    
+//old//    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/?w=id:xlkj,id:myEvents,type:list",bucketIDString];
     
     NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/?w=id:xlkj,id:myEvents,type:list",bucketIDString];
     
@@ -140,8 +171,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *htmlSTR = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-   // NSLog(@"htmlstr=%@",htmlSTR);
+ //   NSString *htmlSTR = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+  //  NSLog(@"htmlstr=%@",htmlSTR);
     
     NSError* error;
     NSDictionary* json = [NSJSONSerialization

@@ -13,12 +13,15 @@
 #define ZBACCESSTOKEN_KEY @"ACCESSTOKEN"
 #define ZBCLIENTID_KEY @"CLIENTID"
 
-
+typedef NS_ENUM(NSInteger, ZBReturnType) {
+    ZBBuckets,                  // buckets
+    ZBEvents                 // events
+};
 
 @protocol ZBConnectionProtocol <NSObject>
 
-// @property NSDictionary *ZBJsonReturned;
-- (void)didReceiveJSON:(NSDictionary *)json;
+// You set up a connection.  If you implemenet this protocol, you'll get back some JSON from that connection.  That's all you know.
+- (void)didReceiveJSON: (NSDictionary *)json;
 
 @optional
 - (id) ZBUserID;
