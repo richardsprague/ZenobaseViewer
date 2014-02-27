@@ -80,9 +80,53 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
     [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
     
+    NSDictionary *newBucketDictionary = [NSDictionary dictionaryWithObjectsAndKeys:newBucketName,@"label",@"bucket created programmatically",@"description",nil];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:newBucketDictionary options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPBody:jsonData];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
+    assert(connection);
+    
+    self.connection = connection;
+    [connection start];
+    
+}
+
+-(void) addNewEventToBucket:(NSString *)bucketID withEvent:(NSDictionary *)eventDict
+{
+    [self.connection cancel];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    self.receivedData = data;
+    
+    
+    //old//    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/?w=id:xlkj,id:myEvents,type:list",bucketIDString];
+    
+    NSString *parameterString = [[NSString alloc] initWithFormat:@"buckets/%@/",bucketID];
+    
+    NSString *urlString = [@"https://api.zenobase.com/" stringByAppendingString:parameterString];
+    NSString *ZBBearer = [[NSString alloc] initWithFormat:@"Bearer %@",self.ZBAccessTokenString] ;
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:ZBBearer forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"api.zenobase.com" forHTTPHeaderField:@"Host"];
+
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:eventDict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPBody:jsonData];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest: request delegate:self];
     assert(connection);

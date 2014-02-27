@@ -11,5 +11,6 @@
 #import "ZBBucketTVC.h"
 
 @interface ZBStartVC : UIViewController
-
+@property (strong, nonatomic) IBOutlet UITextField *addBucketField;
+- (IBAction) finishAddBucket:(id)sender;
 @end

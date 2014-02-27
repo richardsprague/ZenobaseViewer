@@ -20,6 +20,8 @@
 - (void) getZBAccessTokenForUsername: (NSString *) username withPassword: (NSString *)password;
 - (void) getBuckets;
 - (void) getEventsForBucket: (NSString *) bucketIDString;
+- (void) createNewBucket: (NSString *) newBucketName;
+- (void) addNewEventToBucket: (NSString *) bucketID withEvent: (NSDictionary *) eventDict;
 
 
 @property (strong, nonatomic) id <ZBConnectionProtocol>delegate;

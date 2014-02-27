@@ -26,6 +26,15 @@
 
 @implementation ZBEventVC
 
+- (IBAction)makeNewEventPressed:(id)sender {
+    
+    ZBConnectionDelegate *connection = [[ZBConnectionDelegate alloc] init];
+    connection.delegate = self;
+    [connection addNewEventToBucket:[self.bucket objectForKey:@"@id"] withEvent:[[NSDictionary alloc] init]];  // just add an event for now, with no parameters.
+    NSLog(@"new event added");
+    
+}
+
 - (NSArray *) getEventList {
     if (!self.eventList){ self.eventList = [[NSMutableArray alloc]init]; }
     return self.eventList;

@@ -12,19 +12,41 @@
 @property (weak, nonatomic) IBOutlet UILabel *ZBClientIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ZBUsernameLabel;
 @property (strong, nonatomic) NSMutableArray *buckets;
+
+
 @end
 
 @implementation ZBStartVC
 
+- (IBAction) finishAddBucket:(id)sender
+{
+    NSLog(@"you typed: %@",self.addBucketField.text);
+    [sender resignFirstResponder];
+    ZBConnectionDelegate *connection = [[ZBConnectionDelegate alloc] init];
+    connection.delegate = self;
+    [connection createNewBucket:self.addBucketField.text ];
+
+}
 
 - (IBAction)browseBucketsClicked:(id)sender {
     
     NSLog(@"browse buckets clicked");
+    ZBConnectionDelegate *connection = [[ZBConnectionDelegate alloc] init    ];
+    connection.delegate = self;
+    
+    [connection getBuckets];
+    
+}
+
+- (void) findBuckets {
     
 }
 
 - (void) didReceiveJSON:(NSDictionary *)json
 {
+    NSString *msg = [json objectForKey:@"message"];
+    if (!msg){
+        
     
     NSDictionary *jsonBuckets = [json objectForKey:@"buckets"];
     NSString *jsonTotal = [json objectForKey:@"total"];
@@ -48,6 +70,9 @@
     //ZBBucketViewController *nextVC = [[ZBBucketViewController alloc] init];
     
     self.buckets = bucketArray;
+    }
+    else NSLog(@"error: %@",msg);
+    
     
     
 }
